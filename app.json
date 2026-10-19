@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "smart-garden-app",
+    "slug": "smart-garden-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "smartgardenapp",
+    "userInterfaceStyle": "automatic",
+    "ios": {},
+    "android": {
+      "adaptiveIcon": {
+        // "backgroundColor": "#E6F4FE"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          // "backgroundColor": "#208AEF",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 76
+        }
+      ],
+      "expo-asset"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "1e5e5092-f388-475a-b295-6b3a3a476282"
+      }
+    },
+    "owner": "nityambakshi"
+  }
+}
