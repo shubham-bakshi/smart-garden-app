@@ -1,17 +1,34 @@
+import { useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors, spacings } from '../global-styles';
+import { spacing, typography } from '../constants/theme';
+import { useTheme } from '../theme/useTheme';
 
 export function Header() {
+  const { theme } = useTheme();
+
+  const style = useMemo(() => (
+    StyleSheet.create({
+      container: {
+        paddingHorizontal: spacing.xl,
+        paddingVertical: spacing.sm
+      },
+      header: {
+        ...typography.headingLarge,
+        color: theme.primary,
+        fontFamily: 'DMSans_700Bold'
+      },
+      subheader: {
+        ...typography.bodySmall,
+        color: theme.textMuted,
+        fontFamily: 'DMSans_400Regular'
+      }
+    })
+  ), [theme]);
+
   return (
     <View style={style.container}>
-      <Text >Header</Text>
+      <Text style={style.header}>Verdant</Text>
+      <Text style={style.subheader}>YOUR PLANT COMPANION</Text>
     </View>
   )
 }
-
-const style = StyleSheet.create({
-    container: {
-        padding: spacings.md,
-        backgroundColor: colors.brand.botanicalMist,
-    }
-});

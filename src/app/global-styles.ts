@@ -62,4 +62,5 @@ export const typography = {
   heading: 20,
   body: 16,
   caption: 12,
+  subheading: 8
 };
