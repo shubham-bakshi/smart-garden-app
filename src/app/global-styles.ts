@@ -1,66 +1,65 @@
+import { palette, spacing, themes, typography as typeScale } from "./constants/theme";
 
+// Compatibility exports for older call sites. Values are sourced from the
+// canonical theme tokens so this file cannot drift from constants/theme.ts.
 export const colors = {
   brand: {
-    forest: '#244C3A',
-    deepForest: "#19382B",
-    sage: "#91A98C",
-    softSage: "#D8E3D2",
-    clay: "#D8A28D",
-    botanicalMist: "#E3EBDD",
+    forest: palette.forest,
+    deepForest: palette.deepForest,
+    sage: palette.sage,
+    softSage: palette.softSage,
+    clay: palette.clay,
+    botanicalMist: palette.softSage,
   },
-
   light: {
-    background: "#F7F6F0",
-    surface: "#FFFFFF",
-    surfaceSecondary: "#F1F3EC",
-    surfaceSelected: "#E3EBDD",
-    text: "#25342C",
-    textSecondary: "#657168",
-    border: "#DDE3D9",
-    primary: "#244C3A",
+    background: themes.light.background,
+    surface: themes.light.surface,
+    surfaceSecondary: themes.light.surfaceSecondary,
+    surfaceSelected: themes.light.surfaceSelected,
+    text: themes.light.text,
+    textSecondary: themes.light.textSecondary,
+    border: themes.light.border,
+    primary: themes.light.primary,
   },
-
   dark: {
-    background: "#151C18",
-    surface: "#222D26",
-    surfaceElevated: "#2C3930",
-    surfaceSelected: "#293C2E",
-    text: "#E8EEE7",
-    textSecondary: "#B0BDB2",
-    border: "#455449",
-    primary: "#91A98C",
+    background: themes.dark.background,
+    surface: themes.dark.surface,
+    surfaceElevated: themes.dark.surfaceSecondary,
+    surfaceSelected: themes.dark.surfaceSelected,
+    text: themes.dark.text,
+    textSecondary: themes.dark.textSecondary,
+    border: themes.dark.border,
+    primary: themes.dark.primary,
   },
-
   status: {
-    healthy: { light: "#43845A", dark: "#86C995" },
-    attention: { light: "#B77924", dark: "#F0BE68" },
-    critical: { light: "#B94B45", dark: "#F18B83" },
-    offline: { light: "#697580", dark: "#AAB6C2" },
-    info: { light: "#347DA3", dark: "#7DC5E8" },
+    healthy: { light: palette.healthy, dark: "#86C995" },
+    attention: { light: palette.attention, dark: "#F0BE68" },
+    critical: { light: palette.critical, dark: "#F18B83" },
+    offline: { light: palette.offline, dark: "#AAB6C2" },
+    info: { light: palette.lightSensor, dark: "#7DC5E8" },
   },
-
   charts: {
-    soilMoisture: "#43845A",
-    lightLevel: "#347DA3",
-    temperature: "#C78342",
-    battery: "#718D61",
-    gridLight: "#DDE3D9",
-    gridDark: "#455449",
+    soilMoisture: palette.soil,
+    lightLevel: palette.lightSensor,
+    temperature: palette.temperature,
+    battery: palette.moss,
+    gridLight: palette.border,
+    gridDark: palette.darkBorder,
   },
 } as const;
 
 export const spacings = {
-    xs: 4,
-    sm: 8,
-    md: 16,
-    lg: 24,
-    xl: 32,
+  xs: spacing.xs,
+  sm: spacing.sm,
+  md: spacing.lg,
+  lg: spacing.xxl,
+  xl: spacing.xxxl,
 } as const;
 
 export const typography = {
-  title: 28,
-  heading: 20,
-  body: 16,
-  caption: 12,
-  subheading: 8
-};
+  title: typeScale.pageTitle.fontSize,
+  heading: typeScale.headingMedium.fontSize,
+  body: typeScale.body.fontSize,
+  caption: typeScale.caption.fontSize,
+  subheading: typeScale.label.fontSize,
+} as const;
