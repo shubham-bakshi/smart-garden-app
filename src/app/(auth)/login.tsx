@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import { Link } from 'expo-router';
 import { useAuth } from '../auth/AuthContext';
+import { useTheme } from '../theme/useTheme';
+import { radius, spacing } from '../constants/theme';
 
 export default function Login() {
   const { signIn } = useAuth();
@@ -16,6 +18,9 @@ export default function Login() {
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const { theme } = useTheme();
+
+  const styles = generateStyles(theme);
 
   const onSubmit = async () => {
     setError(null);
@@ -35,10 +40,11 @@ export default function Login() {
   };
 
   return (
-    <View>
-      <Text>Welcome Back!</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome Back!</Text>
       <TextInput
         placeholder="Email"
+        style={styles.input}
         autoCapitalize="none"
         keyboardType="email-address"
         autoCorrect={false}
@@ -47,6 +53,7 @@ export default function Login() {
       />
       <TextInput
         placeholder="Password"
+        style={styles.input}
         autoCapitalize="none"
         secureTextEntry
         autoCorrect={false}
@@ -73,16 +80,18 @@ export default function Login() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', padding: 24 },
-  title: { fontSize: 28, fontWeight: '700', marginBottom: 24 },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 12,
-    marginBottom: 12,
-  },
-  error: { color: '#c00', marginBottom: 12 },
-  link: { marginTop: 16, textAlign: 'center', color: '#06c' },
-});
+function generateStyles(theme: ReturnType<typeof useTheme>['theme']) {
+  return StyleSheet.create({
+    container: { flex: 1, justifyContent: 'center', padding: 24 },
+    title: { fontSize: 28, fontWeight: '700', marginBottom: 24 },
+    input: {
+      borderWidth: 1,
+      borderColor: theme.critical,
+      borderRadius: radius.sm,
+      padding: spacing.md,
+      marginBottom: spacing.md,
+    },
+    error: { color: theme.critical, marginBottom: spacing.md },
+    link: { marginTop: spacing.md, textAlign: 'center', color: '#06c' },
+  });
+}
